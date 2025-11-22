@@ -4,3 +4,5 @@
   bs=require "bs.lua",then you can use bs.into() to switch to blue mode and bs.back() to switch back to red mode. 
 
   ConvenientBulletSpawner is a library that helps us create bullet objects in a more convenient way,including parameters like omega and other stuff.
+
+Also I attached a mod I made using the two libraries  to help you understand!
