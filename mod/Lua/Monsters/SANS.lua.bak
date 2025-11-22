@@ -1,0 +1,42 @@
+-- A basic monster script skeleton you can copy and modify for your own creations.
+comments = {"SAAAANNNSSS DANNNNNCE"}
+commands = {"FLIRT"}
+randomdialogue = {"..."}
+
+sprite = "Papyrus" --Always PNG. Extension is added automatically.
+name = "SANS"
+hp = 1000
+atk = 30
+def = 5000000
+check = "Now he feels obliged to stop you\rhere."
+dialogbubble = "right" -- See documentation for what bubbles you have available.
+canspare = false
+cancheck = true
+xp = 100
+gold = 250
+
+-- Happens after the slash animation but before the animation.
+function HandleAttack(attackstatus)
+    if attackstatus == -1 then
+        -- player pressed fight but didn't press Z afterwards
+        currentdialogue = {"..."}
+    else
+    if GetGlobal("Phase")==1 then
+  SetGlobal("Waves",GetGlobal("Waves")+1)
+  Encounter.SetVar("wavetimer",99999)
+  end
+  if GetGlobal("Phase")==2 then
+  SetGlobal("Phase2Waves",GetGlobal("Phase2Waves")+1)
+  end
+        -- player did actually attack
+end
+
+-- This handles the commands; all-caps versions of the commands list you have above.
+function HandleCustomCommand(command)
+    if command == "FLIRT" then
+        currentdialogue = {"[font:papyrus][voice:v_papyrus]Talk about that\r later."}
+        SetGlobal("Phase",1)
+        SetGlobal("Waves",10)
+    BattleDialog({"You selected " .. command .. "."})
+end
+end

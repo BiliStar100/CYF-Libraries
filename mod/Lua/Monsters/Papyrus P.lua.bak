@@ -1,0 +1,36 @@
+-- A basic monster script skeleton you can copy and modify for your own creations.
+comments = {"Smells like the work\rof an enemy stand.", "Poseur is posing like his\rlife depends on it.", "Poseur's limbs shouldn't be\rmoving in this way."}
+commands = {"Flirt"}
+randomdialogue = {"..."}
+
+sprite = "Papyrus" --Always PNG. Extension is added automatically.
+name = "Papyrus"
+hp = 1000
+atk = 30
+def = 5
+check = "The skeleton that wants to join\rthe royal guards.\nLikes to say 'Nyeh Heh heh'!"
+dialogbubble = "right" -- See documentation for what bubbles you have available.
+canspare = false
+cancheck = true
+xp = 100
+gold = 250
+
+-- Happens after the slash animation but before the animation.
+function HandleAttack(attackstatus)
+    if attackstatus == -1 then
+        -- player pressed fight but didn't press Z afterwards
+        currentdialogue = {"..."}
+    else
+  
+        -- player did actually attack
+end
+
+-- This handles the commands; all-caps versions of the commands list you have above.
+function HandleCustomCommand(command)
+    if command == "FLIRT" then
+        currentdialogue = {"[font:papyrus][voice:v_papyrus]Talk about that\r later."}
+        end
+    currentdialogue = {currentdialogue[1]}
+    BattleDialog({"You selected " .. command .. "."})
+end
+end
